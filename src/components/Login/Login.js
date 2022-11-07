@@ -22,6 +22,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                form.reset('')
             })
             .catch(err => {
                 console.log(err);
@@ -33,6 +34,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                
 
             })
             .catch(err => {
