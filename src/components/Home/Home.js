@@ -18,7 +18,7 @@ const Home = () => {
             <div className='p-5 bg-info'>
                 <h2 className='text-center text-white'>Services</h2>
 
-                <div className='grid lg:grid-cols-3 container gap-4'>
+                <div className='grid lg:grid-cols-3 container gap-4 pt-5'>
                     {
                         homeServices.map(service => <HomePage
                             key={service._id}
@@ -28,7 +28,7 @@ const Home = () => {
                     }
 
                 </div>
-                <div className='mt-5 container text-center pt-5'>
+                <div className='mt-3 container text-center pt-5'>
                     <Link to='/services'><Button variant="primary">See All</Button></Link>
                 </div>
 

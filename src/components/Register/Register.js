@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
@@ -8,8 +8,8 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
-
+    const {createUser,updateUserProfile} = useContext(AuthContext);
+    const [error, setError]=useState();
 
     const handleSubmit =(event)=>{
         event.preventDefault();
@@ -17,7 +17,7 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password =form.password.value;
-        const url = form.url.value;
+        const photoURL = form.url.value;
         if(password.length < 6){
             alert('you should be 6 charter')
         }
@@ -27,12 +27,31 @@ const Register = () => {
             const user= result.user;
             console.log(user);
             form.reset('')
+            handleUpdateUserProfile(name, photoURL);
         })
         .catch(err=>{
             console.error(err)
         })
 
     }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+
+            photoURL: photoURL,
+        };
+
+        updateUserProfile(profile)
+            .then((result) => {
+                console.log(result) 
+            })
+            .catch(error => {
+                console.error(error);
+                setError(error.message);
+            })
+    }
+
     return (
         <div className='mt-5'>
 

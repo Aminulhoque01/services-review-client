@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -9,10 +10,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
-    const {user,logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
 
-    const handleLogOut =()=>{
+    const handleLogOut = () => {
         logOut();
     }
     return (
@@ -30,19 +31,28 @@ const Header = () => {
                             <Nav.Link><Link to="/" className='text-decoration-none fw-bold text-secondary'>Home</Link></Nav.Link>
                             <Nav.Link><Link to="/services" className='text-decoration-none fw-bold text-secondary'>Services</Link></Nav.Link>
                             <Nav.Link><Link to="/blog" className='text-decoration-none fw-bold text-secondary'>Blog</Link></Nav.Link>
-                            
-                           
+
+
                         </Nav>
                         <div className="d-flex">
-                          {
-                            user?.email?
-                            <Link to='/login'><Button onClick={handleLogOut} className='mx-2' variant="danger">LogOut</Button></Link>
-                            :
-                            <>
-                             <Link to='/login'><Button className='mx-2' variant="success">Login</Button></Link>
-                            <Link to='/register'><Button variant="secondary">Register</Button></Link>
-                            </>
-                          }
+                            {
+                                user?.photoURL ?
+                                    <>
+                                        <Image
+
+                                            style={{ height: '30px' }} roundedCircle
+
+                                            src={user?.photoURL}
+                                        ></Image>
+                                        
+                                        <Link to='/login'><Button onClick={handleLogOut} className='mx-2' variant="danger">LogOut</Button></Link>
+                                    </>
+                                    :
+                                    <>
+                                        <Link to='/login'><Button className='mx-2' variant="success">Login</Button></Link>
+                                        <Link to='/register'><Button variant="secondary">Register</Button></Link>
+                                    </>
+                            }
                         </div>
                     </Navbar.Collapse>
                 </Container>

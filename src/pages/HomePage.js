@@ -2,9 +2,10 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 const HomePage = ({ service }) => {
-    const { name, image, description } = service;
+    const { _id, name, image, description } = service;
     return (
         <div>
             
@@ -18,7 +19,7 @@ const HomePage = ({ service }) => {
                         <Card.Text>
                             {description.slice(0, 100) + '...'}
                         </Card.Text>
-                        <small> <Button variant="primary">Show Details</Button></small>
+                        <small> <Link to={`/details/${_id}`}><Button variant="primary">Show Details</Button></Link></small>
                     </Card.Body>
                     
 
