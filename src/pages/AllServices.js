@@ -20,10 +20,10 @@ const AllServices = ({ service }) => {
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
-                        {description.slice(0, 250) + '...'}<Link to={`/details/${_id}`}>see more</Link>
+                        {description.slice(0, 100) + '...'}<Link to={`/details/${_id}`}>see more</Link>
                     </Card.Text>
                     <p>Visit:{visit}</p>
-                    <Button variant="primary">Go somewhere</Button>
+                    <Link to={`/details/${_id}`}><Button variant="primary">Show Details</Button></Link>
                 </Card.Body>
             </Card>
         </div>

@@ -6,6 +6,8 @@ import Register from "../../components/Register/Register";
 import Service from "../../components/Services/Service";
 import Main from "../../layout/Main/Main";
 import DetailsPage from "../../pages/DetailsPage";
+import Review from "../../pages/Review";
+import PrivetRouter from "../../PrivetRoutes/PrivetRouter";
 
 export const router= createBrowserRouter([
     {
@@ -25,8 +27,12 @@ export const router= createBrowserRouter([
             },
             {
                 path:'/details/:id',
-                element:<DetailsPage></DetailsPage>,
+                element:<PrivetRouter><DetailsPage></DetailsPage></PrivetRouter>,
                 loader:({params})=>fetch(`http://localhost:5000/AllServices/${params.id}`)
+            },
+            {
+              path:'/review',
+              element:<Review></Review>  
             },
             {
                 path:'/blog',

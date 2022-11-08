@@ -7,7 +7,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
 const HomePage = ({ service }) => {
-    const { _id, name, image, description } = service;
+    const { _id, name, image, description,visit } = service;
     return (
         <div>
 
@@ -27,6 +27,7 @@ const HomePage = ({ service }) => {
                             <Card.Text>
                                 {description.slice(0, 100) + '...'}
                             </Card.Text>
+                            <p>Visit:{visit}</p>
                             <small> <Link to={`/details/${_id}`}><Button variant="primary">Show Details</Button></Link></small>
                         </Card.Body>
 

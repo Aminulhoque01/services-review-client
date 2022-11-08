@@ -33,6 +33,7 @@ const Register = () => {
         })
         .catch(err=>{
             console.error(err)
+            setError(err.message)
         })
 
     }
@@ -84,6 +85,10 @@ const Register = () => {
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" name='password' placeholder="Password" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            {error}
                         </Form.Group>
 
                         <Button variant="primary" type="submit">
