@@ -5,9 +5,10 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Image } from 'react-bootstrap';
 import dman from '../../../src/asstes/image/dman.jpg'
 import { FaLocationArrow, FaMailBulk, FaPhone, FaPhoneAlt, } from 'react-icons/fa';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import HomePage from '../../pages/HomePage';
-// import {FaPhone, BsEnvelopeFill } from "@react-icons/all-files/fa/FaBeer"
+import Button from 'react-bootstrap/Button';
+
 
 const Home = () => {
     const homeServices = useLoaderData();
@@ -19,23 +20,26 @@ const Home = () => {
 
                 <div className='grid lg:grid-cols-3 container gap-4'>
                     {
-                        homeServices.map(service=><HomePage 
-                            key={service._id} 
+                        homeServices.map(service => <HomePage
+                            key={service._id}
                             service={service}>
-                                
-                            </HomePage>)
+
+                        </HomePage>)
                     }
 
+                </div>
+                <div className='mt-5 container text-center pt-5'>
+                    <Link to='/services'><Button variant="primary">See All</Button></Link>
                 </div>
 
             </div>
 
-            <div  className='p-5 bg-secondary'>
-                <Card className='container'style={{ width: '' }}>
+            <div className='p-5 bg-secondary'>
+                <Card className='container' style={{ width: '' }}>
                     <ListGroup >
                         <h2 className='text-center p-5'>About me</h2>
 
-                        <div  className='d-flex container '>
+                        <div className='d-flex container '>
                             <div className='w-50 pb-5'>
                                 <Image src={dman}>
 
@@ -61,7 +65,7 @@ const Home = () => {
                                 <h3 className='text-white '>Phone</h3>
                                 <p className='text-white text-1xl'><FaPhoneAlt className='text-white text-center '></FaPhoneAlt> zufran@email.com</p>
                             </div>
-                               
+
                             <div>
                                 <h3 className='text-white '>Email</h3>
                                 <p className='text-white text-1xl'><FaMailBulk className='text-white text-center '></FaMailBulk> zufran@email.com</p>

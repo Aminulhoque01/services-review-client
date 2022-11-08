@@ -21,7 +21,7 @@ const HomePage = ({ service }) => {
                         <small> <Button variant="primary">Show Details</Button></small>
                     </Card.Body>
                     
-                    
+
                     
                 </Card>
                 
@@ -30,7 +30,7 @@ const HomePage = ({ service }) => {
 
             </CardGroup>
              
-
+            
         </div>
     );
 };
