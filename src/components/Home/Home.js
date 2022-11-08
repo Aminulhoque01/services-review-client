@@ -8,10 +8,12 @@ import { FaLocationArrow, FaMailBulk, FaPhone, FaPhoneAlt, } from 'react-icons/f
 import { Link, useLoaderData } from 'react-router-dom';
 import HomePage from '../../pages/HomePage';
 import Button from 'react-bootstrap/Button';
+import useTitle from '../../hook/useTitle';
 
 
 const Home = () => {
     const homeServices = useLoaderData();
+    useTitle('Home')
     return (
         <div className=''>
             <CarouselSlider></CarouselSlider>

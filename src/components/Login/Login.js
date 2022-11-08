@@ -7,8 +7,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext, } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth'
 import { FaGoogle } from 'react-icons/fa';
+import useTitle from '../../hook/useTitle';
 
 const Login = () => {
+    useTitle('Login')
     const { loginUser, googleLogin } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
 

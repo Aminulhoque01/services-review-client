@@ -5,9 +5,11 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hook/useTitle';
 
 
 const Register = () => {
+    useTitle('Register')
     const {createUser,updateUserProfile} = useContext(AuthContext);
     const [error, setError]=useState();
 

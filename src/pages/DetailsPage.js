@@ -3,9 +3,11 @@ import { useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from 'react-bootstrap/Button';
+import useTitle from '../hook/useTitle';
 
 const DetailsPage = () => {
     const singles = useLoaderData();
+    useTitle('Details')
     return (
         <div className='pt-5 container'>
             <CardGroup>
