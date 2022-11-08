@@ -5,14 +5,28 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Image } from 'react-bootstrap';
 import dman from '../../../src/asstes/image/dman.jpg'
 import { FaLocationArrow, FaMailBulk, FaPhone, FaPhoneAlt, } from 'react-icons/fa';
+import { useLoaderData } from 'react-router-dom';
+import HomePage from '../../pages/HomePage';
 // import {FaPhone, BsEnvelopeFill } from "@react-icons/all-files/fa/FaBeer"
 
 const Home = () => {
+    const homeServices = useLoaderData();
     return (
         <div className=''>
             <CarouselSlider></CarouselSlider>
             <div className='p-5 bg-info'>
                 <h2 className='text-center text-white'>Services</h2>
+
+                <div className='grid lg:grid-cols-3 container gap-4'>
+                    {
+                        homeServices.map(service=><HomePage 
+                            key={service._id} 
+                            service={service}>
+                                
+                            </HomePage>)
+                    }
+
+                </div>
 
             </div>
 
