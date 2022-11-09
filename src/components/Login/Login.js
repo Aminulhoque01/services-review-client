@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { Link, useNavigate,useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext, } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth'
 import { FaGoogle } from 'react-icons/fa';
@@ -18,7 +18,7 @@ const Login = () => {
 
     const location = useLocation()
 
-    const from = location.state?.from?.pathname|| '/' ;
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -29,9 +29,31 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                form.reset('')
-                navigate(from, {replace: true})
+
+                const currentUser = {
+                    email: user.email
+                }
+
+                console.log(currentUser);
+
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+
+                        localStorage.setItem('reviews-token', data.token)
+                        form.reset('')
+                        navigate(from, {replace: true})
+                    })
+
+
+
                 // .toast('successful login')
             })
             .catch(err => {

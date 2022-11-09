@@ -13,30 +13,31 @@ import { Image } from 'react-bootstrap';
 const DetailsPage = () => {
     const { user } = useContext(AuthContext)
     const {_id,visit, name,description,image } = useLoaderData();
-    useTitle('Details')
-    const [click, setClick] = useState();
+    useTitle('Details');
+   
 
     const handlerReview = (event) => {
         event.preventDefault();
         const form = event.target;
-        const name = form.name.value;
+        const username = form.name.value;
         const money = visit;
         const phone = form.phone.value;
         const email = user?.email;
         const textarea = form.textarea.value;
         const image= user?.photoURL
 
-        console.log(name, money, email, phone, textarea,image);
+        console.log(username, money, email, phone, textarea,image);
 
         const Review = {
 
             service:_id,
+            userName:username,
             serviceName:name,
             visit,
             email,
             phone,
             textarea,
-
+            image,
 
         }
 

@@ -6,8 +6,10 @@ import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
 import Service from "../../components/Services/Service";
 import Main from "../../layout/Main/Main";
+import AddServies from "../../pages/AddServies";
 import DetailsPage from "../../pages/DetailsPage";
 import Review from "../../pages/Review";
+import Update from "../../pages/Update";
 import PrivetRouter from "../../PrivetRoutes/PrivetRouter";
 
 export const router= createBrowserRouter([
@@ -33,8 +35,17 @@ export const router= createBrowserRouter([
                 loader:({params})=>fetch(`http://localhost:5000/AllServices/${params.id}`)
             },
             {
+                path:'/addServices',
+                element:<AddServies></AddServies>
+            },
+            {
               path:'/review',
               element:<Review></Review>  
+            },
+            {
+                path:'/update/:id',
+                element:<Update></Update>,
+                loader:({params})=>fetch(`http://localhost:5000/reviews/${params.id}`)
             },
             {
                 path:'/blog',

@@ -16,7 +16,13 @@ const Service = () => {
                         service={service}>
 
                     </AllServices>)
+                   
                 }
+
+                
+
+                
+            
             </div>
         </div>
     );
