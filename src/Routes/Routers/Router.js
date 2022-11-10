@@ -9,6 +9,8 @@ import Main from "../../layout/Main/Main";
 import AddServies from "../../pages/AddServies";
 import DetailsPage from "../../pages/DetailsPage";
 import Review from "../../pages/Review";
+import ReviewDetails from "../../pages/ReviewDetails";
+import ReviewPage from "../../pages/ReviewPage";
 import Update from "../../pages/Update";
 import PrivetRouter from "../../PrivetRoutes/PrivetRouter";
 
@@ -32,6 +34,11 @@ export const router= createBrowserRouter([
             {
                 path:'/details/:id',
                 element:<PrivetRouter><DetailsPage></DetailsPage></PrivetRouter>,
+                loader:({params})=>fetch(`https://services-review-server-tan.vercel.app/AllServices/${params.id}`)
+            },
+            {
+                path:'/reviewPage/:id',
+                element:<PrivetRouter><ReviewPage></ReviewPage></PrivetRouter>,
                 loader:({params})=>fetch(`https://services-review-server-tan.vercel.app/AllServices/${params.id}`)
             },
             {
