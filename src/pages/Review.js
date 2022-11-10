@@ -68,7 +68,7 @@ const Review = () => {
 
                             </ReviewDetails>)
                         :
-                        <h1 className='text-center text-danger'>You No have any reviews please add now</h1>
+                        <h1 className='text-center text-danger'>No reviews were added</h1>
                     }
                 </tbody>
             </Table>
