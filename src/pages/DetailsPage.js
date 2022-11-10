@@ -12,11 +12,11 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const DetailsPage = () => {
     const { user } = useContext(AuthContext)
-    const { _id, visit, name, description, image } = useLoaderData();
+    const { _id, visit, name, description, image, rating } = useLoaderData();
     useTitle('Details');
 
 
-    
+
 
     return (
         <div className='bg-secondary mb-5'>
@@ -34,17 +34,51 @@ const DetailsPage = () => {
                             <p>visit:{visit}</p>
                         </Card.Body>
 
-                       <div className='p-3'>
-                       <Link to={`/reviewPage/${_id}`}><Button variant="primary" type="submit" >
-                            please Review
-                        </Button></Link>
-                       </div>
+                        <div className='p-3'>
+                            <Link to={`/reviewPage/${_id}`}><Button variant="primary" type="submit" >
+                                please Review
+                            </Button></Link>
+                        </div>
 
                     </Card>
 
                 </CardGroup>
 
-                
+                <div className='mt-5'>
+                    <CardGroup>
+
+                        <Card >
+
+
+                            <div className='container '>
+                                <h4 className=' p-5'>All reviews Reviews</h4>
+
+                                <Card>
+                                    <div className=''>
+                                        <div className='p-2'>
+                                            <Image
+                                                name='image'
+                                                style={{ height: '30px' }} roundedCircle
+
+                                                src={user?.photoURL}
+                                            ></Image>
+                                        </div>
+                                        <div className='p-2'>
+                                            <h5>name:{user.displayName}</h5>
+                                        </div>
+                                        <div className='p-2'>
+                                            <p>rating:{rating}</p>
+                                        </div>
+                                    </div>
+                                </Card>
+
+                            </div>
+
+
+                        </Card>
+
+                    </CardGroup>
+                </div>
             </div>
         </div>
     );
