@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 import useTitle from '../hook/useTitle';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 
 const AllServices = ({ service }) => {
+    useTitle('services')
     const { name, image, description, visit, _id } = service;
+    const { loader } = useContext(AuthContext);
+    if(loader){
+        return <Spinner animation="border" variant="info" />
+    }
 
     return (
         <div>
@@ -29,7 +36,8 @@ const AllServices = ({ service }) => {
                 </Card>
 
             </div>
-           
+     
+
         </div>
     );
 };

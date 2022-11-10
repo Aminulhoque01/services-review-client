@@ -49,7 +49,7 @@ const Home = () => {
                             </div>
                             <div className='w-50'>
                                 <h3 className='text-secondary fw-bold text-4xl pt-2'>I am Dr.Zufran</h3>
-                                <p className='text-secondary text-1xl pt-2'>I am form usa.my  10 years of experience. My speciality is a cardiology, but I am also pediatrician and dietician.I am Specialist surgeon.arythmia treatment,Deiet,phycal extratner,ECG TESTS.normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English</p>
+                                <p className='text-secondary text-1xl pt-2'>I am form usa.my  10 years of experience. My speciality is a cardiology, but I am also pediatrician and dietician.I am Specialist surgeon.arythmia treatment,Deiet,phycal extratner,ECG TESTS.normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.Beginning of Time!</p>
 
                             </div>
                         </div>

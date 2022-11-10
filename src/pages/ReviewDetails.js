@@ -6,9 +6,10 @@ import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
 
 
-const ReviewDetails = ({ review,handleDelete,handleUpdate }) => {
+const ReviewDetails = ({ review,handleDelete}) => {
     const { user } = useContext(AuthContext);
     const { _id, userName,serviceName, visit, email,phone, textarea, image, status } = review;
    
@@ -39,7 +40,7 @@ const ReviewDetails = ({ review,handleDelete,handleUpdate }) => {
                         <td>{serviceName}</td>
                         <td>{phone}</td>
                         
-                        <Link to={`/update/${_id}`}><td><Button onClick={()=>handleUpdate(_id)} variant="warning">Edit review</Button></td></Link>
+                        <Link to={`/reviews/${_id}`}><td><Button variant="warning">Edit review</Button></td></Link>
                         <td><Button onClick={()=>handleDelete(_id)} variant="danger">Delete</Button></td>
                         
                     </tr>

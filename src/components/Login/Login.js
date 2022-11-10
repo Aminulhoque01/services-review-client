@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
@@ -8,17 +9,21 @@ import { AuthContext, } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth'
 import { FaGoogle } from 'react-icons/fa';
 import useTitle from '../../hook/useTitle';
+import { Spinner } from 'react-bootstrap';
 
 const Login = () => {
     useTitle('Login')
-    const { loginUser, googleLogin } = useContext(AuthContext);
+    const { loginUser, googleLogin, loader } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
     const [error, setError] = useState();
-
+    
     const location = useLocation()
 
     const from = location.state?.from?.pathname || '/';
+
+    
+
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -36,7 +41,7 @@ const Login = () => {
 
                 console.log(currentUser);
 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://services-review-server-tan.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -49,17 +54,24 @@ const Login = () => {
 
                         localStorage.setItem('reviews-token', data.token)
                         form.reset('')
-                        navigate(from, {replace: true})
+                        navigate(from, { replace: true })
+                        // .toast('successful login')
+                        toast('Successfully Login.');
+                        if (loader) {
+                            return <Spinner animation="border" variant="info" />
+                        }
                     })
 
 
 
-                // .toast('successful login')
+
             })
             .catch(err => {
                 console.log(err)
                 setError(err.message)
             })
+
+           
     }
 
     const handleGoogle = () => {
@@ -75,10 +87,12 @@ const Login = () => {
             })
     }
 
-    return (
-        <div className='mt-5'>
 
-            <Card className='container p-5' style={{ width: '30rem' }}>
+    return (
+
+        <div className='bg-secondary '>
+
+            <Card className='container p-5 ' style={{ width: '30rem' }}>
 
 
                 <ListGroup>
@@ -104,16 +118,20 @@ const Login = () => {
                         <Button variant="primary" type="submit">
                             Login
                         </Button>
+                        
+                        <Toaster />
                         <p>You have a no Account..<Link to='/register' className='text-orange-600 text-decoration-none'>register</Link></p>
                     </Form>
                     <div className='mt-5 '>
                         <Button variant="warning" onClick={handleGoogle}> <FaGoogle></FaGoogle> <p>Sign In With Google</p></Button>
                     </div>
+
                 </ListGroup>
 
             </Card>
 
         </div>
+
     );
 };
 

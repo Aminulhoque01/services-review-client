@@ -19,8 +19,8 @@ const CarouselSlider = () => {
                         style={{ height: '550px' }}
                     />
                     <Carousel.Caption>
-                        <h3 className='fw-bold'>Hey I am Doctor zufran</h3>
-                        <p className='fw-bold'>I am doctor with 10 years of experience. My speciality is a cardiology, but I am also pediatrician and dietician.!</p>
+                        <h3 className='fw-bold text-secondary'>Enjoy Your Life — We'll Be Here to Save it! We care for you — inside and out! Taking Care of You Since — Well, Beginning of Time!</h3>
+                        
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -32,8 +32,8 @@ const CarouselSlider = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3 className='fw-bold'>Hey I am Doctor zufran</h3>
-                        <p className='fw-bold'>I am doctor with 10 years of experience. My speciality is a cardiology, but I am also pediatrician and dietician.!</p>
+                        <h3 className='fw-bold text-secondary'>Enjoy Your Life — We'll Be Here to Save it! We care for you — inside and out! Taking Care of You Since — Well, Beginning of Time!</h3>
+                        
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -45,8 +45,8 @@ const CarouselSlider = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3 className='fw-bold'>Hey I am Doctor zufran</h3>
-                        <p className='fw-bold'>I am doctor with 10 years of experience. My speciality is a cardiology, but I am also pediatrician and dietician.!</p>
+                        <h3 className='fw-bold text-secondary'>Enjoy Your Life — We'll Be Here to Save it! We care for you — inside and out! Taking Care of You Since — Well, Beginning of Time!</h3>
+                        
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

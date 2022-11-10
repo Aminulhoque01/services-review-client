@@ -6,11 +6,12 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hook/useTitle';
-
+import { Spinner } from 'react-bootstrap';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
     useTitle('Register')
-    const {createUser,updateUserProfile} = useContext(AuthContext);
+    const {createUser,updateUserProfile,loader} = useContext(AuthContext);
     const [error, setError]=useState();
 
     const handleSubmit =(event)=>{
@@ -30,11 +31,16 @@ const Register = () => {
             console.log(user);
             form.reset('')
             handleUpdateUserProfile(name, photoURL);
+            toast('Successfully Register.');
         })
         .catch(err=>{
             console.error(err)
             setError(err.message)
         })
+
+        if(loader){
+            return <Spinner animation="border" variant="info" />
+        }
 
     }
 
@@ -56,7 +62,7 @@ const Register = () => {
     }
 
     return (
-        <div className='mt-5'>
+        <div className='bg-secondary'>
 
             <Card className='container p-5' style={{ width: '30rem' }}>
 
@@ -94,6 +100,7 @@ const Register = () => {
                         <Button variant="primary" type="submit">
                             Register
                         </Button>
+                        <Toaster />
                         <p>You have a no Account..<Link to='/login' className='text-orange-600 text-decoration-none'>Login</Link></p>
                     </Form>
                 </ListGroup>

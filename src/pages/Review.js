@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import useTitle from '../hook/useTitle';
 import ReviewDetails from './ReviewDetails';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Review = () => {
     useTitle('Reviews');
@@ -15,7 +16,7 @@ const Review = () => {
  
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+        fetch(`https://services-review-server-tan.vercel.app/reviews?email=${user?.email}`,{
             headers:{
                 authorization:`Bearer ${localStorage.getItem('reviews-token')}`
                 
@@ -30,7 +31,7 @@ const Review = () => {
     const handleDelete=(id)=>{
         const proceed= window.confirm('Are you cancel the review?')
         if(proceed){
-            fetch(`http://localhost:5000/reviews/${id}`,{
+            fetch(`https://services-review-server-tan.vercel.app/reviews/${id}`,{
                 method:'DELETE'
             })
             .then(res=>res.json())
@@ -38,8 +39,7 @@ const Review = () => {
                 console.log(data);
                 if(data.deletedCount > 0){
                     alert('deleted successfully');
-
-                    
+                   
 
                     const remaining = reviews.filter(rev=> rev._id !==id);
                     setReviews(remaining)
@@ -57,8 +57,9 @@ const Review = () => {
             <Table striped bordered hover size="sm">
                 
                 <tbody>
-
-                    {
+                   
+                    { reviews.length > 0 ?
+                        
                         reviews.map(review => <ReviewDetails 
                             key={review._id} 
                             review={review}
@@ -66,6 +67,8 @@ const Review = () => {
                             >
 
                             </ReviewDetails>)
+                        :
+                        <h1 className='text-center text-danger'>You No have any reviews please add now</h1>
                     }
                 </tbody>
             </Table>

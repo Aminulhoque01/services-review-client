@@ -21,18 +21,18 @@ export const router= createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>,
-                loader:()=>fetch('http://localhost:5000/HomeServices')
+                loader:()=>fetch('https://services-review-server-tan.vercel.app/HomeServices')
             },
             {
                 path:'/services',
                 element:<Service></Service>,
-                loader:()=>fetch('http://localhost:5000/AllServices')
+                loader:()=>fetch('https://services-review-server-tan.vercel.app/AllServices')
 
             },
             {
                 path:'/details/:id',
                 element:<PrivetRouter><DetailsPage></DetailsPage></PrivetRouter>,
-                loader:({params})=>fetch(`http://localhost:5000/AllServices/${params.id}`)
+                loader:({params})=>fetch(`https://services-review-server-tan.vercel.app/AllServices/${params.id}`)
             },
             {
                 path:'/addServices',
@@ -43,9 +43,9 @@ export const router= createBrowserRouter([
               element:<Review></Review>  
             },
             {
-                path:'/update/:id',
+                path:'/reviews/:id',
                 element:<Update></Update>,
-                loader:({params})=>fetch(`http://localhost:5000/reviews/${params.id}`)
+                loader:({params})=>fetch(`https://services-review-server-tan.vercel.app/reviews/${params.id}`)
             },
             {
                 path:'/blog',

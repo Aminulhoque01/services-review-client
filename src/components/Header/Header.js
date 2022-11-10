@@ -20,7 +20,7 @@ const Header = () => {
         <div>
             <Navbar bg="light" expand="lg">
                 <Container >
-                    <Navbar.Brand href="#">Doctor</Navbar.Brand>
+                    <Navbar.Brand><Link to='/' className='text-decoration-none fw-bold text-secondary'>Doctor</Link></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
