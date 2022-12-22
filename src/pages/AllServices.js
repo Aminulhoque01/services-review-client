@@ -10,7 +10,7 @@ import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 
 const AllServices = ({ service }) => {
     useTitle('services')
-    const { name, image, description, visit, _id } = service;
+    const { name, image, description, visit, _id,rating } = service;
     const { loader } = useContext(AuthContext);
     if(loader){
         return <Spinner animation="border" variant="info" />
@@ -31,6 +31,7 @@ const AllServices = ({ service }) => {
                             {description.slice(0, 100) + '...'}<Link to={`/details/${_id}`}>see more</Link>
                         </Card.Text>
                         <p>Visit:{visit}</p>
+                        <p>Rating:{rating}</p>
                         <Link to={`/details/${_id}`}><Button variant="primary">Show Details</Button></Link>
                     </Card.Body>
                 </Card>
